@@ -1,0 +1,15 @@
+version: '3'
+services:
+  task123:
+    container_name: thinkprompt-assignment-task123
+    build: .
+    command: python /app/src/script1.py
+    volumes:
+      - ./out:/app/src/out
+
+  task4:
+    container_name: thinkprompt-assignment-task4
+    build: .
+    command: python /app/src/script2.py
+    volumes:
+      - ./out:/app/src/out
