@@ -37,6 +37,8 @@ class PptxExtractor:
                     for run in paragraph.runs:
                         f.write(run.text)
                         f.write("\n")
+            print(f"extracted all texts to file: {file}")
+
 
 
     def extract_images(self, folder_path: str) -> None:
@@ -50,8 +52,11 @@ class PptxExtractor:
             os.makedirs(os.path.dirname(image_filename), exist_ok=True)
             with open(image_filename, 'wb') as f:
                 f.write(image_bytes)
+        print(f"extracted images to folder: {folder_path}")
+
 
     def translate(self, target_save_path):
+        print("Translating...")
         ps = [shape for shape in self.paragraph_shapes_iter()]
         for shape in ps:
 
@@ -88,4 +93,5 @@ class PptxExtractor:
 
 
         os.makedirs(os.path.dirname(target_save_path), exist_ok=True)
+        print(f"exported translated vertion to file: {target_save_path}")
         self.prs.save(target_save_path)
